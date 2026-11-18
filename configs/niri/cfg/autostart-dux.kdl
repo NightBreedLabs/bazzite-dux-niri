@@ -1,0 +1,5 @@
+// ────────────── Dux Shell Startup Applications ──────────────
+include "./autostart-common.kdl"
+
+spawn-at-startup "dms" "run"
+spawn-at-startup "dcal" "run" "--session" "--hidden"

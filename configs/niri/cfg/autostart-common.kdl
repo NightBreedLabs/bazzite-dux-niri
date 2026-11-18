@@ -1,0 +1,11 @@
+// ────────────── Common Startup Applications ──────────────
+// Shared by both Noctalia and Dux Shell sessions
+
+    // Unlock KWallet from PAM login credentials immediately at session start
+    spawn-at-startup "/usr/libexec/pam_kwallet_init"
+
+    // KDE Keyring daemon
+    spawn-at-startup "/usr/bin/kwalletd6"
+
+    // Clipboard history daemon
+    spawn-at-startup "wl-paste" "--watch" "cliphist" "store"

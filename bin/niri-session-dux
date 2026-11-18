@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Niri Session with Dux Shell Profile
+# ==============================================================================
+set -e
+
+export NIRI_CONFIG="${HOME}/.config/niri/config-dux.kdl"
+export NIRI_SHELL="dux"
+
+cleanup() {
+    if command -v systemctl &>/dev/null; then
+        systemctl --user unset-environment NIRI_CONFIG NIRI_SHELL 2>/dev/null || true
+    fi
+}
+trap cleanup EXIT INT TERM
+
+if command -v systemctl &>/dev/null; then
+    systemctl --user set-environment NIRI_CONFIG="$NIRI_CONFIG" NIRI_SHELL="dux"
+fi
+
+/usr/bin/niri-session "$@"

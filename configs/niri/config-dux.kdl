@@ -1,0 +1,16 @@
+include "./cfg/animation.kdl"
+include "./cfg/autostart-dux.kdl"
+include "./cfg/keybinds-dux.kdl"
+include "./cfg/input.kdl"
+include "./cfg/display.kdl"
+include "./cfg/layout.kdl"
+include "./cfg/rules.kdl"
+include "./cfg/misc.kdl"
+
+// ────────────── Active Theme ──────────────
+include "./themes/tokyo-night.kdl"
+
+// Steam dropdown popup fix: upstream xwayland-satellite 0.8.3.
+xwayland-satellite {
+    path "/var/home/josenightbreed/.local/opt/xwayland-satellite/0.8.3/bin/xwayland-satellite"
+}

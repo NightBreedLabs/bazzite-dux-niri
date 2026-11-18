@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Switch active Wayland shell in Niri on-the-fly
+# Usage: switch-shell [noctalia|dux]
+# ==============================================================================
+set -euo pipefail
+
+TARGET="${1:-}"
+
+if [[ -z "$TARGET" ]]; then
+    if pgrep -x "noctalia" >/dev/null 2>&1; then
+        echo "Currently running: Noctalia"
+        TARGET="dux"
+    else
+        echo "Currently running: Dux Shell"
+        TARGET="noctalia"
+    fi
+    echo "Defaulting switch to: $TARGET"
+fi
+
+case "$TARGET" in
+    noctalia)
+        echo "Switching to Noctalia Shell..."
+        pkill -x dms 2>/dev/null || true
+        pkill -x quickshell 2>/dev/null || true
+        sleep 0.5
+        niri msg action load-config-file --path ~/.config/niri/config-noctalia.kdl 2>/dev/null || true
+        if ! pgrep -x "noctalia" >/dev/null 2>&1; then
+            noctalia & disown
+        fi
+        echo "Switched to Noctalia."
+        ;;
+    dux|dms)
+        echo "Switching to Dux Shell..."
+        pkill -x noctalia 2>/dev/null || true
+        sleep 0.5
+        niri msg action load-config-file --path ~/.config/niri/config-dux.kdl 2>/dev/null || true
+        if ! pgrep -x "dms" >/dev/null 2>&1; then
+            dms run & disown
+        fi
+        echo "Switched to Dux Shell."
+        ;;
+    *)
+        echo "Usage: switch-shell [noctalia|dux]"
+        exit 1
+        ;;
+esac

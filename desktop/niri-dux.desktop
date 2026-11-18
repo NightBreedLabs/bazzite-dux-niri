@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Niri (Dux Shell)
+Comment=A scrollable-tiling Wayland compositor with Dux Shell
+Exec=/usr/local/bin/niri-session-dux
+Type=Application
+DesktopNames=niri
