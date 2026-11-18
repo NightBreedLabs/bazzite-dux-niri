@@ -9,3 +9,6 @@
 
     // Clipboard history daemon
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+    // X11 / XEmbed legacy system tray proxy to StatusNotifierItem
+    spawn-at-startup "/usr/bin/xembedsniproxy"
