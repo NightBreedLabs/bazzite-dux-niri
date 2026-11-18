@@ -4,6 +4,7 @@ binds {
     // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+    Mod+Slash                           hotkey-overlay-title="Keybinds Cheatsheet: Dux" { spawn "dms" "ipc" "call" "keybinds" "toggle" "niri"; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Konsole" { spawn "konsole"; }
