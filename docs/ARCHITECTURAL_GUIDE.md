@@ -35,9 +35,11 @@
   * Exports `NIRI_CONFIG="${HOME}/.config/niri/config-dux.kdl"`.
   * Spawns `niri --config "${NIRI_CONFIG}"`.
 
-* **Live Switcher CLI (`/usr/local/bin/switch-shell`)**:
-  * Allows switching the active shell live or setting the default session from Konsole.
-  * Usage: `switch-shell noctalia`, `switch-shell dux`, or `switch-shell status`.
+* **Live Switcher CLI (`~/.local/bin/switch-shell`, source `bin/switch-shell`)**:
+  * Switches the running shell live inside the current Niri session. It does not change which session the login screen starts by default; pick that at login.
+  * Usage: `switch-shell noctalia` or `switch-shell dux` (`dms` is accepted as an alias for `dux`).
+  * Running `switch-shell` with no argument **toggles** to the other shell; it is not a status check. There is no `status` subcommand.
+  * To see which shell is running: `pgrep -x noctalia` or `pgrep -x dms`.
 
 ---
 

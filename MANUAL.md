@@ -119,10 +119,10 @@
     `dms restart`
   * Reload Niri configuration live:
     `niri msg action load-config-file`
-* **Switching Default Shell from Terminal**:
-  * Set Noctalia: `switch-shell noctalia`
-  * Set Dux Shell: `switch-shell dux`
-  * Check current: `switch-shell status`
+* **Switching Shell Live from Terminal** (`~/.local/bin/switch-shell`; affects the current session only, not the login default):
+  * Switch to Noctalia: `switch-shell noctalia`
+  * Switch to Dux Shell: `switch-shell dux`
+  * Check current: `pgrep -x noctalia` or `pgrep -x dms` (there is no `switch-shell status`; running `switch-shell` with no argument toggles shells)
 
 ---
 
